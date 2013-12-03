@@ -24,7 +24,9 @@ public class Client extends JFrame {
 	private JPanel firstPanel;
 	private JPanel secondPanel;
 	
-	// ne znam zasto :D
+	// ne znam zasto :D 
+	// setih se: razlog - prosledjujem klijenta u RefreshEvent-u u konstruktoru GetServers
+	// da mi znao kome da vraca servere
 	private Client client;
 	
 	// disconnect - OBAVEZNO PRVO PRITISNUTI DISCONNECT PA POTOM UGASITI SERVER
@@ -50,7 +52,7 @@ public class Client extends JFrame {
 		socketCommunication = new DatagramSocket();
 		setVisible(true);
 		addWindowListener(new ProzorDogadjaji());
-		refresh.addActionListener(new RefreshDogadjaji());
+		refresh.addActionListener(new RefreshEvent());
 	}
 	
 	// gasi prozor, gasi sve niti u klijentu, zatvara socket-e
@@ -97,7 +99,7 @@ public class Client extends JFrame {
 	
 	// refresh button - pravi novu nit koja 3 sekunde trazi servere
 	// i zatim se gasi
-	private class RefreshDogadjaji implements ActionListener {
+	private class RefreshEvent implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			secondPanel.removeAll();
 			refresh.setEnabled(false);

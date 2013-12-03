@@ -15,7 +15,6 @@ public class Reciever extends Thread {
 			while(!interrupted()) {
 					byte[] recieveMessage = new byte [1000];
 					DatagramPacket recievePacket = new DatagramPacket(recieveMessage,recieveMessage.length);
-					if (cliThread.getKraj()) break;
 					cliThread.getSocket().receive(recievePacket);
 					String message = new String(recievePacket.getData()).trim();
 					System.out.println(message);

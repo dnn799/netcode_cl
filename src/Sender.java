@@ -16,7 +16,6 @@ public class Sender extends Thread {
 						wait();
 					}
 					System.out.println("prosao block");
-					if (cliThread.getKraj()) break;
 					byte[] sendMessage = cliThread.getClient().getEditor().getText().getBytes();
 					cliThread.getClient().getEditor().setText("");
 					

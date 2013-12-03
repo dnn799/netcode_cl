@@ -10,8 +10,6 @@ public class ClientThread extends Thread {
 	private Sender sender;
 	private Reciever reciever;
 	
-	private boolean kraj = false;
-	
 	private InetAddress serverAddress;
 	private int serverPort;
 	
@@ -39,6 +37,7 @@ public class ClientThread extends Thread {
 	public InetAddress getServerAddress() {
 		return serverAddress;
 	}
+	
 	public int getServerPort() {
 		return serverPort;
 	}
@@ -76,18 +75,13 @@ public class ClientThread extends Thread {
 			
 		} catch (Exception e) {}
 	}
-	
-	public boolean getKraj() {
-		return kraj;
-	}
-	
+
 	public synchronized void obavesti() {
 		notify();
 	}
 	
 	public void zavrsi() {
 		socketCommunication.close();
-		kraj = true;
 		interrupt();
 	}
 	
