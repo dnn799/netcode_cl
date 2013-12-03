@@ -51,12 +51,12 @@ public class Client extends JFrame {
 		communicationWindow();
 		socketCommunication = new DatagramSocket();
 		setVisible(true);
-		addWindowListener(new ProzorDogadjaji());
+		addWindowListener(new WindowsEvent());
 		refresh.addActionListener(new RefreshEvent());
 	}
 	
 	// gasi prozor, gasi sve niti u klijentu, zatvara socket-e
-	private class ProzorDogadjaji extends WindowAdapter {
+	private class WindowsEvent extends WindowAdapter {
 		public void windowClosing(WindowEvent d) {
 			obustavi();
 			dispose();
@@ -116,7 +116,7 @@ public class Client extends JFrame {
 		}
 	}
 	
-	private class TastaturaDogadjaji extends KeyAdapter {
+	private class KeyboardsEvent extends KeyAdapter {
 		public void keyPressed(KeyEvent e) {
 			if (e.getKeyCode()==KeyEvent.VK_ENTER) {
 				clientThread.getSender().obavesti(); // obavestava nit da je pritisnut enter
@@ -212,7 +212,7 @@ public class Client extends JFrame {
 		prikazivac = new Label("",Label.CENTER);
 		communicationPanel.add(prikazivac,"Center");
 		editor = new TextField();
-		editor.addKeyListener(new TastaturaDogadjaji());
+		editor.addKeyListener(new KeyboardsEvent());
 		communicationPanel.add(editor,"South");
 		communicationPanel.revalidate();
 		communicationPanel.repaint();
