@@ -9,7 +9,7 @@ public class Client extends JFrame {
 	
 	private boolean connected = false;
 	
-	// 2 panela, 1. za komunikacioni prozor, 2. za refresh prozor
+	// 2 panela, 1. za komunikacioni prozor, 2. za refresh prozor r
 	private JPanel communicationPanel;
 	private JPanel refreshPanel;
 	
