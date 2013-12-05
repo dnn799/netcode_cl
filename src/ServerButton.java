@@ -51,7 +51,7 @@ public class ServerButton {
 			String port1 = new String(recievePacket.getData()).trim();
 			int serverPort = Integer.parseInt(port1);
 			client.setServer(serverListeningPort,serverPort,serverAddress);
-			client.changePanel(client.communicationPanel());
+			client.changePanel(client.getCommunicationPanel());
 			client.connected();
 		} catch (IOException e) {}
 	}

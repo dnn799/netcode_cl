@@ -80,6 +80,7 @@ public class Client extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			obustavi();
 			notConnected();
+			getSecondPanel().removeAll();
 			changePanel(refreshPanel);
 		}
 	}
@@ -126,8 +127,11 @@ public class Client extends JFrame {
 		}
 	}
 	
+	public JPanel getRefreshPanel() {
+		return refreshPanel;
+	}
 	
-	public JPanel communicationPanel() {
+	public JPanel getCommunicationPanel() {
 		return communicationPanel;
 	}
 	

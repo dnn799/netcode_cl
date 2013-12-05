@@ -13,12 +13,12 @@ public class Reciever extends Thread {
 	public void run()  {
 		try {
 			while(!interrupted()) {
-					byte[] recieveMessage = new byte [1000];
+					byte[] recieveMessage = new byte [500];
 					DatagramPacket recievePacket = new DatagramPacket(recieveMessage,recieveMessage.length);
 					cliThread.getSocket().receive(recievePacket);
-					String message = new String(recievePacket.getData()).trim();
-					System.out.println(message);
-					cliThread.getClient().getPrikazivac().setText(message);
+					Data data = Data.read(recievePacket.getData());
+					System.out.println(data);
+					cliThread.getClient().getPrikazivac().setText(data.toString());
 					for (int i=0; i<recieveMessage.length; i++) {
 						recieveMessage[i]=0;
 				}

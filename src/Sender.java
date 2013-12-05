@@ -16,16 +16,21 @@ public class Sender extends Thread {
 						wait();
 					}
 					System.out.println("prosao block");
-					byte[] sendMessage = cliThread.getClient().getEditor().getText().getBytes();
+					//byte[] sendMessage = cliThread.getClient().getEditor().getText().getBytes();
+					byte[] dataToSend=null;
+					
+					Data data = new Data(cliThread.getClient().getEditor().getText());
+					dataToSend = data.write();
+					System.out.println(dataToSend.length);
 					cliThread.getClient().getEditor().setText("");
 					
-					DatagramPacket sendPacket = new DatagramPacket(sendMessage,sendMessage.length,cliThread.getServerAddress(),cliThread.getServerPort());
+					DatagramPacket sendPacket = new DatagramPacket(dataToSend,dataToSend.length,cliThread.getServerAddress(),cliThread.getServerPort());
 					
 					cliThread.getSocket().send(sendPacket);
 					
-					for (int i=0; i<sendMessage.length;i++) {
-						sendMessage[i]=0;
-				}
+//					for (int i=0; i<sendMessage.length;i++) {
+//						sendMessage[i]=0;
+//				}
 			}
 		} catch (Exception e) {}
 	}
